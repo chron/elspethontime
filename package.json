@@ -1,0 +1,23 @@
+{
+  "name": "elspethontime",
+  "version": "1.0.0",
+  "description": "Did Elspeth make it to work on time?",
+  "scripts": {
+    "start": "npx @11ty/eleventy --serve",
+    "build": "npx @11ty/eleventy"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/chron/elspethontime.git"
+  },
+  "keywords": [],
+  "author": "Paul Prestidge <paul@paulandemma.co.nz>",
+  "license": "MIT",
+  "homepage": "https://didelspethmakeit.com",
+  "devDependencies": {
+    "@11ty/eleventy": "^0.11.0",
+    "date-fns": "^2.15.0",
+    "dotenv": "^8.2.0",
+    "node-fetch": "^2.6.0"
+  }
+}
