@@ -18,9 +18,9 @@ layout: layout.liquid
     {% for record in sheet %}
       <div class="day day--{{ record.state }}" style="--appear-delay: {{ forloop.index0 | divided_by: 12 }}s;">
         {% if record.state == 'yes' %}
-          <img class="day__icon" src="/assets/trophy.svg" alt="Trophy icon" title="She made it!" />
+          <img class="day__icon" src="/trophy.svg" alt="Trophy icon" title="She made it!" />
         {% elsif record.state == 'no' %}
-          <img class="day__icon" src="/assets/skull.svg" alt="Skull icon" title="She didn't make it." />
+          <img class="day__icon" src="/skull.svg" alt="Skull icon" title="She didn't make it." />
         {% endif %}
         {% if record.state != 'ghost' %}
           {{ record.date | cuteDate }}

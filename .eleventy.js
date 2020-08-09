@@ -26,7 +26,7 @@ module.exports = function(config) {
     return format(date, 'MMMM do');
   });
 
-  config.addPassthroughCopy("src/assets");
+  config.addPassthroughCopy({ "src/assets": "/" });
 
   return {
     dir: {
