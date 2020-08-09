@@ -9,6 +9,11 @@ layout: layout.liquid
     <h2>Best streak: {{ sheet | bestStreak }}</h2>
   </div>
 
+  <div class="progress">
+    <div class="progress__bar" style="width: {{ sheet | currentStreak | times: 10 }}%"></div>
+    Progress towards next tier: {{ sheet | currentStreak }} / 10
+  </div>
+
   <div class="calendar">
     {% for record in sheet %}
       <div class="day day--{{ record.state }}" style="--appear-delay: {{ forloop.index0 | divided_by: 12 }}s;">
