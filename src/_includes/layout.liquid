@@ -1,99 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Did Elspeth make it to work on time?</title>
-  <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:wght@400;700&display=swap" rel="stylesheet">
-  <style>
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-    html, body { height: 100%; }
-
-    :root {
-      --background-color: whitesmoke;
-      --title-color: #111111;
-      --success-color: #89c9b8;
-      --failure-color: #d9adad;
-      --upcoming-color: whitesmoke;
-      --text-color: #36454f;
-
-      --title-font: "Libre Baskerville", serif;
-      --body-font: "Open Sans", sans-serif;
-      --scale: clamp(400px, 100vw, 1000px);
-    }
-
-    body {
-      padding: 5vmin 0;
-      overscroll-behavior: none;
-      background-color: var(--background-color);
-      font-family: var(--body-font);
-    }
-
-    h1 {
-      margin-bottom: calc(0.03 * var(--scale));;
-      color: var(--title-color);
-      font-family: var(--title-font);
-      font-size: calc(0.04 * var(--scale));;
-      text-align: center;
-      font-weight: 700;
-    }
-
-    h2 {
-      color: var(--title-color);
-      font-family: var(--title-font);
-      font-size: calc(0.03 * var(--scale));;
-      font-weight: 400;
-    }
-
-    .content {
-      width: calc(0.83 * var(--scale));
-      margin: 0 auto;
-    }
-
-    .split {
-      display: flex;
-      justify-content: space-around;
-      margin-bottom: calc(0.05 * var(--scale));;
-    }
-
-    .calendar {
-      display: grid;
-      grid-template-columns: repeat(5, calc(0.15 * var(--scale)));
-      grid-auto-rows: calc(0.15 * var(--scale));
-      grid-gap: calc(0.02 * var(--scale));
-    }
-
-    .day {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      border: calc(0.006 * var(--scale)) solid currentColor;
-      border-radius: calc(0.004 * var(--scale));
-      color: var(--text-color);
-      font-size: calc(0.02 * var(--scale));
-      font-weight: bold;
-    }
-
-    .day--ghost {
-      background-color: transparent;
-      border: none;
-    }
-
-    .day--yes {
-      background-color: var(--success-color);
-    }
-
-    .day--no {
-      background-color: var(--failure-color);
-    }
-
-    .day--upcoming {
-      background-color: var(--upcoming-color);
-      color: #dcdcdc
-    }
-  </style>
-</head>
-<body>
-  {{ content }}
-</body>
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Did Elspeth make it to work on time?</title>
+    <link href="/assets/main.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:wght@400;700&display=swap" rel="stylesheet">
+  </head>
+  <body>
+    {{ content }}
+  </body>
 </html>

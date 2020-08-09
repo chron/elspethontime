@@ -11,7 +11,12 @@ layout: layout.liquid
 
   <div class="calendar">
     {% for record in sheet %}
-      <div class="day day--{{ record.state }}">
+      <div class="day day--{{ record.state }}" style="--appear-delay: {{ forloop.index0 | divided_by: 12 }}s;">
+        {% if record.state == 'yes' %}
+          <img class="day__icon" src="/assets/trophy.svg" alt="Trophy icon" title="She made it!" />
+        {% elsif record.state == 'no' %}
+          <img class="day__icon" src="/assets/skull.svg" alt="Skull icon" title="She didn't make it." />
+        {% endif %}
         {% if record.state != 'ghost' %}
           {{ record.date | cuteDate }}
         {% endif %}
@@ -19,3 +24,10 @@ layout: layout.liquid
     {% endfor %}
   </div>
 </div>
+
+<footer>
+  Made with
+  <span class="heart">♥</span>
+  by
+  <a href="https://twitter.com/chron9">Paul</a>
+</footer>
