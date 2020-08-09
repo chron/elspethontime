@@ -6,7 +6,7 @@ html, body { height: 100%; }
   --background-color: whitesmoke;
   --title-color: #111111;
   --success-foreground: #C98F00;
-  --success-background: linear-gradient(30deg, #E3A900, #fcc200);
+  --success-background: linear-gradient(131deg, #E3A900, #fcc200, #E3A900);
   --failure-foreground: white;
   --failure-background: #333333;
   --upcoming-foreground: #dcdcdc;
@@ -85,9 +85,8 @@ a:hover {
   flex-direction: column;
   justify-content: space-evenly;
   align-items: center;
-  /* border: calc(0.005 * var(--scale)) solid currentColor; */
-  border-radius: calc(0.004 * var(--scale));
-  box-shadow: 0 0 10px rgba(0,0,0,0.2);
+  border-radius: calc(0.007 * var(--scale));
+  box-shadow: 0 0 calc(0.01 * var(--scale)) rgba(0,0,0,0.2);
 
   color: var(--text-color);
   font-size: calc(0.02 * var(--scale));
