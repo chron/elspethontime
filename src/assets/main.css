@@ -5,11 +5,12 @@ html, body { height: 100%; }
 :root {
   --background-color: whitesmoke;
   --title-color: #111111;
-  --success-foreground: #daa520;
-  --success-background: #fcc200;
+  --success-foreground: #C98F00;
+  --success-background: linear-gradient(30deg, #E3A900, #fcc200);
   --failure-foreground: white;
   --failure-background: #333333;
-  --upcoming-color: whitesmoke;
+  --upcoming-foreground: #dcdcdc;
+  --upcoming-background: whitesmoke;
   --text-color: #36454f;
   --title-font: "Libre Baskerville", serif;
   --body-font: "Open Sans", sans-serif;
@@ -58,7 +59,6 @@ a {
 
 a:hover {
   text-decoration: underline;
-  text-decoration-thickness: 200%;
 }
 
 .content {
@@ -85,8 +85,10 @@ a:hover {
   flex-direction: column;
   justify-content: space-evenly;
   align-items: center;
-  border: calc(0.006 * var(--scale)) solid currentColor;
+  /* border: calc(0.005 * var(--scale)) solid currentColor; */
   border-radius: calc(0.004 * var(--scale));
+  box-shadow: 0 0 10px rgba(0,0,0,0.2);
+
   color: var(--text-color);
   font-size: calc(0.02 * var(--scale));
   font-weight: bold;
@@ -96,23 +98,23 @@ a:hover {
 
 .day--ghost {
   background-color: transparent;
-  border: none;
+  box-shadow: none;
 }
 
 .day--yes {
   color: var(--success-foreground);
-  background-color: var(--success-background);
+  background: var(--success-background);
 }
 
 .day--no {
   color: var(--failure-foreground);
   border-color: var(--failure-background);
-  background-color: var(--failure-background);
+  background: var(--failure-background);
 }
 
 .day--upcoming {
-  background-color: var(--upcoming-color);
-  color: #dcdcdc;
+  background: var(--upcoming-background);
+  color: var(--upcoming-foreground);
 }
 
 .day__icon {
