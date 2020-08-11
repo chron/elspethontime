@@ -12,7 +12,7 @@ html, body { height: 100%; }
   --upcoming-foreground: #dcdcdc;
   --upcoming-background: #fafafa;
   --wfh-foreground: #81b29a;
-  --wfh-background: #caffbf;
+  --wfh-background: radial-gradient(hsl(150, 24%, 70%), hsl(150, 24%, 85%));
   --text-color: #36454f;
   --body-font: "Inter", "Open Sans", sans-serif;
   --title-font: inherit;
