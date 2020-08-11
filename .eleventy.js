@@ -4,7 +4,9 @@ function streaks(dayArray) {
   return dayArray.reduce(([current, max], day) => {
     if(day.state === 'upcoming') { return [current, max]; }
 
-    const newCurrent = day.state === 'yes' ? current + 1 : 0;
+    const newCurrent = day.state === 'no' ? 0 : (
+      day.state === 'yes' ? current + 1 : current
+    );
     const newMax = Math.max(max, newCurrent);
 
     return [newCurrent, newMax];

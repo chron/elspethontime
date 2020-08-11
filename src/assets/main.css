@@ -11,6 +11,8 @@ html, body { height: 100%; }
   --failure-background: #333333;
   --upcoming-foreground: #dcdcdc;
   --upcoming-background: #fafafa;
+  --wfh-foreground: #81b29a;
+  --wfh-background: #caffbf;
   --text-color: #36454f;
   --body-font: "Inter", "Open Sans", sans-serif;
   --title-font: inherit;
@@ -118,6 +120,11 @@ a:hover {
 .day--upcoming {
   background: var(--upcoming-background);
   color: var(--upcoming-foreground);
+}
+
+.day--wfh {
+  background: var(--wfh-background);
+  color: var(--wfh-foreground);
 }
 
 .day__icon {

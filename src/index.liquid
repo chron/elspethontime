@@ -21,6 +21,8 @@ layout: layout.liquid
           <img class="day__icon" src="/trophy.svg" alt="Trophy icon" title="She made it!" />
         {% elsif record.state == 'no' %}
           <img class="day__icon" src="/skull.svg" alt="Skull icon" title="She didn't make it." />
+        {% elsif record.state == 'wfh' %}
+          <img class="day__icon" src="/house.svg" alt="House icon" title="She worked from home this day." />
         {% endif %}
         {% if record.state != 'ghost' %}
           {{ record.date | cuteDate }}
