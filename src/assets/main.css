@@ -88,7 +88,7 @@ a:hover {
   justify-content: space-evenly;
   align-items: center;
   border-radius: calc(0.007 * var(--scale));
-  box-shadow: 0 0 calc(0.01 * var(--scale)) rgba(0,0,0,0.2);
+  box-shadow: 0 calc(0.005 * var(--scale)) calc(0.01 * var(--scale)) rgba(0,0,0,0.2);
 
   color: var(--text-color);
   font-size: calc(0.02 * var(--scale));
