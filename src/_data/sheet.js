@@ -1,5 +1,5 @@
 require('dotenv').config();
-const fetch = require('node-fetch');
+const Cache = require("@11ty/eleventy-cache-assets");
 const addDays = require('date-fns/addDays');
 
 const { GOOGLE_SHEET_ID } = process.env;
@@ -19,35 +19,33 @@ function addDaysSkipWeekends(date, numDays) {
   }
 }
 
-module.exports = () => {
-  return new Promise((resolve, reject) => {
-    fetch(GOOGLE_SHEET_URL).then(response => response.json()).then(data => {
-      let transformedData = data.feed.entry.map(item => {
-        const date = new Date(item.gsx$date.$t);
-
-        if (date.getDay() === 0 || date.getDay() === 6) { return null; }
-
-        return {
-          date,
-          state: item.gsx$state.$t,
-        };
-      }).filter(Boolean);
-
-      let lastDate = transformedData[transformedData.length - 1].date;
-
-      const placeholders = new Array(NUM_PLACEHOLDERS).fill(null).map(() => {
-        lastDate = addDaysSkipWeekends(lastDate, 1);
-
-        return {
-          date: lastDate,
-          state: 'upcoming',
-        };
-      });
-
-      resolve(transformedData.concat(placeholders));
-    }).catch(error => {
-      console.error(error);
-      reject(error);
-    });
+module.exports = async () => {
+  let data = await Cache(GOOGLE_SHEET_URL, {
+    duration: "1d",
+    type: "json"
   });
+
+  let transformedData = data.feed.entry.map(item => {
+    const date = new Date(item.gsx$date.$t);
+
+    if (date.getDay() === 0 || date.getDay() === 6) { return null; }
+
+    return {
+      date,
+      state: item.gsx$state.$t,
+    };
+  }).filter(Boolean);
+
+  let lastDate = transformedData[transformedData.length - 1].date;
+
+  const placeholders = new Array(NUM_PLACEHOLDERS).fill(null).map(() => {
+    lastDate = addDaysSkipWeekends(lastDate, 1);
+
+    return {
+      date: lastDate,
+      state: 'upcoming',
+    };
+  });
+
+  return transformedData.concat(placeholders);
 };
