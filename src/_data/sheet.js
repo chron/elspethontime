@@ -1,6 +1,7 @@
 require('dotenv').config();
 const Cache = require("@11ty/eleventy-cache-assets");
 const addDays = require('date-fns/addDays');
+const format = require('date-fns/format');
 
 const { GOOGLE_SHEET_ID } = process.env;
 const GOOGLE_SHEET_URL = `https://spreadsheets.google.com/feeds/list/${GOOGLE_SHEET_ID}/od6/public/values?alt=json`;
@@ -37,7 +38,16 @@ module.exports = async () => {
   }).filter(Boolean);
 
   let lastDate = transformedData[transformedData.length - 1].date;
+  const nowInNZT = new Date(Date.now() - 12 * 60 * 60 * 1000);
 
+  while (format(lastDate, 'yyyyMMdd') < format(nowInNZT, 'yyyyMMdd')) {
+    lastDate = addDaysSkipWeekends(lastDate, 1);
+
+    transformedData = transformedData.concat({
+      date: lastDate,
+      state: 'unknown',
+    });
+  }
   const placeholders = new Array(NUM_PLACEHOLDERS).fill(null).map(() => {
     lastDate = addDaysSkipWeekends(lastDate, 1);
 
@@ -47,5 +57,7 @@ module.exports = async () => {
     };
   });
 
-  return transformedData.concat(placeholders);
+  transformedData = transformedData.concat(placeholders);
+
+  return transformedData;
 };
