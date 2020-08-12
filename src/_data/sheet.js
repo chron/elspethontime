@@ -38,9 +38,7 @@ module.exports = async () => {
   }).filter(Boolean);
 
   let lastDate = transformedData[transformedData.length - 1].date;
-  const nowInNZT = new Date(Date.now() - 12 * 60 * 60 * 1000);
-
-  console.log(lastDate, nowInNZT, new Date(), Date.now());
+  const nowInNZT = new Date(Date.now() + 12 * 60 * 60 * 1000);
 
   while (format(lastDate, 'yyyyMMdd') < format(nowInNZT, 'yyyyMMdd')) {
     lastDate = addDaysSkipWeekends(lastDate, 1);
