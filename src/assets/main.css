@@ -3,7 +3,7 @@
 html { height: 100%; }
 
 :root {
-  --background: linear-gradient(#fafafa, white);
+  --background: linear-gradient(#fafafa, #cccccc);
   --title-color: #111111;
   --success-foreground: #C98F00;
   --success-background: linear-gradient(131deg, #E3A900, #fcc200, #E3A900);
@@ -28,6 +28,7 @@ body {
   padding: 5vmin 0;
   overscroll-behavior: none;
   background: var(--background);
+  background-attachment: fixed;
   font-family: var(--body-font);
 }
 
