@@ -2,6 +2,7 @@ require('dotenv');
 const Twit = require('twit');
 const { query, Client } = require('faunadb');
 const format = require('date-fns/format');
+const fetch = require('node-fetch');
 
 const { Collection, Create } = query;
 
