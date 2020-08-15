@@ -1,10 +1,11 @@
 require('dotenv').config();
-const Cache = require("@11ty/eleventy-cache-assets");
+const fetch = require('node-fetch');
+const { query, Client } = require('faunadb');
 const addDays = require('date-fns/addDays');
 const format = require('date-fns/format');
 
-const { GOOGLE_SHEET_ID } = process.env;
-const GOOGLE_SHEET_URL = `https://spreadsheets.google.com/feeds/list/${GOOGLE_SHEET_ID}/od6/public/values?alt=json`;
+const { Match, Paginate, Index } = query;
+
 const NUM_PLACEHOLDERS = 6;
 
 function addDaysSkipWeekends(date, numDays) {
@@ -21,23 +22,19 @@ function addDaysSkipWeekends(date, numDays) {
 }
 
 module.exports = async () => {
-  let data = await Cache(GOOGLE_SHEET_URL, {
-    duration: "1d",
-    type: "json"
-  });
+  const fauna = new Client({ secret: process.env.FAUNADB_SECRET_KEY });
+  let response = await fauna.query(Paginate(Match(Index('all_days'))));
 
-  let transformedData = data.feed.entry.map(item => {
-    const date = new Date(item.gsx$date.$t);
+  let transformedData = response.data.map(([itemDate, state]) => {
+    const date = new Date(Date.parse(itemDate));
 
     if (date.getDay() === 0 || date.getDay() === 6) { return null; }
 
-    return {
-      date,
-      state: item.gsx$state.$t,
-    };
+    return { date, state };
   }).filter(Boolean);
 
   let lastDate = transformedData[transformedData.length - 1].date;
+  // This is really not DST-compatible
   const nowInNZT = new Date(Date.now() + 12 * 60 * 60 * 1000);
 
   while (format(lastDate, 'yyyyMMdd') < format(nowInNZT, 'yyyyMMdd')) {
