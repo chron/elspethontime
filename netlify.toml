@@ -6,5 +6,5 @@
 [build.environment]
   TZ="Pacific/Auckland"
 
-[plugins]
+[[plugins]]
   package = "@netlify/plugin-functions-install-core"
