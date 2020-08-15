@@ -5,6 +5,8 @@ html { height: 100%; }
 :root {
   --background: linear-gradient(#fafafa, #dddddd);
   --title-color: #111111;
+  --progress-foreground: black;
+  --progress-background: linear-gradient(#25d49d, #0CBB84);
   --success-foreground: #C98F00;
   --success-background: linear-gradient(131deg, #E3A900, #fcc200, #E3A900);
   --failure-foreground: white;
@@ -63,13 +65,15 @@ h2 {
 a {
   padding: calc(0.005 * var(--scale));
   color: white;
-  background-color: black;
+  background: black;
   font-weight: bold;
   text-decoration: none;
 }
 
-a:hover {
+a:hover, a:active {
   text-decoration: underline;
+  color: var(--progress-foreground);
+  background: var(--progress-background);
 }
 
 .content {
@@ -170,7 +174,7 @@ a:hover {
   left: 0;
   top: 0;
   height: 100%;
-  background: linear-gradient(#25d49d, #0CBB84);
+  background: var(--progress-color);
   z-index: -1;
 }
 

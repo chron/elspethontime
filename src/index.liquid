@@ -5,8 +5,8 @@ layout: layout.liquid
   <h1>Did Elspeth make it to work on time?</h1>
 
   <div class="split">
-    <h2>Overall ratio: {{ sheet | yesPercentage }}%</h2>
     <h2>Current streak: {{ sheet | currentStreak }}</h2>
+    <h2>Overall: {{ sheet | yesPercentage }}%</h2>
     <h2>Best streak: {{ sheet | bestStreak }}</h2>
   </div>
 
