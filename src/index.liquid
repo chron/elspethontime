@@ -5,6 +5,7 @@ layout: layout.liquid
   <h1>Did Elspeth make it to work on time?</h1>
 
   <div class="split">
+    <h2>Overall ratio: {{ sheet | yesPercentage }}%</h2>
     <h2>Current streak: {{ sheet | currentStreak }}</h2>
     <h2>Best streak: {{ sheet | bestStreak }}</h2>
   </div>
@@ -35,8 +36,16 @@ layout: layout.liquid
 </div>
 
 <footer>
-  Made with
-  <span class="heart">♥</span>
-  by
-  <a href="https://twitter.com/chron9">Paul</a>
+  <section>
+    Made with
+    <span class="heart">♥</span>
+    by
+    <a href="https://twitter.com/chron9">Paul</a>
+  </section>
+
+  <section>
+    Follow
+    <a href="https://twitter.com/elspethontime">@elspethontime</a>
+    for live updates!
+  </section>
 </footer>

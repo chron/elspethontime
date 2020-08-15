@@ -1,5 +1,8 @@
 const format = require('date-fns/format');
 
+// Others (e.g. WFH) don't count towards the total
+const ELIGIBLE_STATES = ['yes', 'no'];
+
 function streaks(dayArray) {
   return dayArray.reduce(([current, max], day) => {
     if(day.state === 'upcoming') { return [current, max]; }
@@ -14,15 +17,24 @@ function streaks(dayArray) {
 }
 
 module.exports = function(config) {
-  config.addLiquidFilter("currentStreak", dayArray => {
+  config.addLiquidFilter('currentStreak', dayArray => {
     const [current] = streaks(dayArray);
     return current;
   });
 
-  config.addLiquidFilter("bestStreak", dayArray => {
+  config.addLiquidFilter('bestStreak', dayArray => {
     const [, best] = streaks(dayArray);
     return best;
   });
+
+  config.addLiquidFilter('yesPercentage', dayArray => {
+    const [yes,elig] = dayArray.reduce(([yesCount,eligibleCount],c) => {
+      return [yesCount + (c.state === 'yes' ? 1 : 0), eligibleCount + (ELIGIBLE_STATES.includes(c.state) ? 1 : 0)]
+    }, [0, 0]);
+
+    return Math.round(yes / elig * 100);
+  });
+
 
   config.addLiquidFilter('cuteDate', date => {
     return format(date, 'MMMM do');
