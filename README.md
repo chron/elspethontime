@@ -14,8 +14,17 @@ npm install
 npm i -g netlify-cli
 ntl init
 ntl dev
-(or npm run start to load the frontend without Netlify hooked up)
 ```
+
+Or, without Netlify hooked up:
+
+```
+npm install
+npm run start
+```
+
+(In that case you'll need a `.env` file with at least the FaunaDB key in it)
+
 ## Architecture
 
 The site is an Eleventy-powered static site.  Backend information is stored in a collection in FaunaDB
@@ -40,3 +49,7 @@ twitter, and then trigger a rebuild of the site via a Netlify build hook.
 | TWITTER_API_SECRET | Twitter auth nonsense. |
 | TWITTER_ACCESS_KEY | Twitter auth nonsense. |
 | TWITTER_ACCESS_SECRET | Twitter auth nonsense. |
+
+## Dedication
+
+To Elspeth, for being an inspirational colleague and generally a good sport.  I appreciate you!
