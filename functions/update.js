@@ -46,6 +46,22 @@ exports.handler = async function(event, _context) {
     await fauna.query(Create(Collection('days'), { data: { date, state }}));
     await tweet(MESSAGES_BY_STATE[state]);
 
+    if (process.env.SLACK_WEBHOOK_URL) {
+      await fetch(process.env.SLACK_WEBHOOK_URL, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          channel: '#elspeth_accountability',
+          text: MESSAGES_BY_STATE[state],
+          icon_emoji: ':daria:',
+          username: 'Did Elspeth make it?',
+          link_names: 1,
+        }),
+      });
+    }
+
     if (process.env.BUILD_WEBHOOK_URL) {
       await fetch(process.env.BUILD_WEBHOOK_URL, { method: 'POST' })
     }
