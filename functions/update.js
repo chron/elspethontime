@@ -34,20 +34,31 @@ async function tweet(status) {
 exports.handler = async function(event, _context) {
   const { state, password } = event.queryStringParameters;
 
+  console.log('Triggering update');
+
   if (password !== process.env.BACKEND_PASSWORD) {
+    console.log('Incorrect password, aborting');
     return { statusCode: 401, body: "Bad" };
   }
 
   const date = format(new Date(), 'yyyy-MM-dd');
 
+  console.log(`State = ${state}, date = ${date}`);
+
   const fauna = new Client({ secret: process.env.FAUNADB_SECRET_KEY });
 
   try {
+    console.log('Creating record in FaunaDB');
+
     await fauna.query(Create(Collection('days'), { data: { date, state }}));
+
+    console.log('Posting to twitter');
     await tweet(MESSAGES_BY_STATE[state]);
 
     if (process.env.SLACK_WEBHOOK_URL) {
-      await fetch(process.env.SLACK_WEBHOOK_URL, {
+      console.log('Posting to Slack webhook');
+
+      const response = await fetch(process.env.SLACK_WEBHOOK_URL, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -60,11 +71,20 @@ exports.handler = async function(event, _context) {
           link_names: 1,
         }),
       });
+
+      console.log(response);
+    } else {
+      console.log('No Slack webhook configured');
     }
 
     if (process.env.BUILD_WEBHOOK_URL) {
+      console.log('Triggering POST request to build webhook');
       await fetch(process.env.BUILD_WEBHOOK_URL, { method: 'POST' })
+    } else {
+      console.log('No build webhook configured');
     }
+
+    console.log('Done!');
 
     return {
       statusCode: 204,
