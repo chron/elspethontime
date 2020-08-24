@@ -64,7 +64,7 @@ exports.handler = async function(event, _context) {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({
-          channel: '#elspeth_accountability',
+          channel: '#elspeth-accountability',
           text: MESSAGES_BY_STATE[state],
           icon_emoji: ':daria:',
           username: 'Did Elspeth make it?',
