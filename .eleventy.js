@@ -35,7 +35,6 @@ module.exports = function(config) {
     return Math.round(yes / elig * 100);
   });
 
-
   config.addLiquidFilter('cuteDate', date => {
     return format(date, 'MMMM do');
   });
@@ -46,10 +45,6 @@ module.exports = function(config) {
     dir: {
       input: "src",
       output: "dist",
-      //data: `_data/${env}`
     },
-    // templateFormats : ["njk"],
-    // htmlTemplateEngine : "njk",
-    // markdownTemplateEngine : "njk"
   };
 }
