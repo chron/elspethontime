@@ -24,6 +24,8 @@ layout: layout.liquid
           <img class="day__icon" src="/skull.svg" alt="Skull icon" title="She didn't make it." />
         {% elsif record.state == 'wfh' %}
           <img class="day__icon" src="/house.svg" alt="House icon" title="She worked from home this day." />
+        {% elsif record.state == 'sick' %}
+          <img class="day__icon" src="/ambulance.svg" alt="Ambulance icon" title="She wasn't feeling well and had the day off." />
         {% elsif record.state == 'unknown' %}
           <img class="day__icon" src="/question-square.svg" alt="Question mark inside a square" title="Who knows???" />
         {% endif %}

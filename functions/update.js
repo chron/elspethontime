@@ -17,6 +17,7 @@ const MESSAGES_BY_STATE = {
   yes: `Elspeth made it to work on time!`,
   no: `Elspeth didn't make it to work on time.`,
   wfh: `Elspeth is working from home today.`,
+  sick: `Elspeth is off sick today.`,
 };
 
 async function tweet(status) {
