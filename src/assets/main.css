@@ -108,7 +108,7 @@ a:hover, a:active {
   font-size: calc(0.018 * var(--scale));
   font-weight: bold;
 
-  animation: 0.1s ease-out var(--appear-delay) normal both appear;
+  animation: 0.15s ease-out var(--appear-delay) normal both appear;
   transform: scale(1);
 }
 
@@ -193,7 +193,7 @@ a:hover, a:active {
 
 @keyframes appear {
   0% {
-    transform: translateY(5vh);
+    transform: translateY(15vh);
     opacity: 0;
   }
 

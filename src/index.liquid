@@ -19,7 +19,7 @@ layout: layout.liquid
     {% for record in sheet reversed %}
       {% assign state = states[record.state] %}
 
-      <div class="day day--{{ record.state }} day--{{ record.date | weekday }}" style="--appear-delay: {{ forloop.index0 | divided_by: 12 }}s;">
+      <div class="day day--{{ record.state }} day--{{ record.date | weekday }}" style="--appear-delay: {{ forloop.index0 | divided_by: 5 | floor | divided_by: 6 }}s;">
         {% if state %}
           <img class="day__icon" src="{{ state.image }}" alt="{{ state.alt }}" title="{{ state.title }}" />
 
