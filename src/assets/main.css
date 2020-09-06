@@ -11,8 +11,6 @@ html { height: 100%; }
   --success-background: linear-gradient(131deg, #E3A900, #fcc200, #E3A900);
   --failure-foreground: white;
   --failure-background: #333333;
-  --upcoming-foreground: #dcdcdc;
-  --upcoming-background: #fafafa;
   --sick-foreground: #c47335;
   --sick-background: #f7c8a1;
   --unknown-foreground: #7400b8;
@@ -94,6 +92,7 @@ a:hover, a:active {
   display: grid;
   grid-template-columns: repeat(5, calc(0.15 * var(--scale)));
   grid-auto-rows: calc(0.15 * var(--scale));
+  grid-auto-flow: dense;
   grid-gap: calc(0.02 * var(--scale));
 }
 
@@ -132,11 +131,6 @@ a:hover, a:active {
   background: var(--failure-background);
 }
 
-.day--upcoming {
-  background: var(--upcoming-background);
-  color: var(--upcoming-foreground);
-}
-
 .day--wfh {
   background: var(--wfh-background);
   color: var(--wfh-foreground);
@@ -146,6 +140,12 @@ a:hover, a:active {
   background: var(--sick-background);
   color: var(--sick-foreground);
 }
+
+.day--monday { grid-column: 1; }
+.day--tuesday { grid-column: 2; }
+.day--wednesday { grid-column: 3; }
+.day--thursday { grid-column: 4; }
+.day--friday { grid-column: 5; }
 
 .day--unknown {
   background: var(--unknown-background);

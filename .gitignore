@@ -3,3 +3,4 @@ node_modules
 .netlify
 .env
 .cache
+.faunarc

@@ -16,8 +16,8 @@ layout: layout.liquid
   </div>
 
   <div class="calendar">
-    {% for record in sheet %}
-      <div class="day day--{{ record.state }}" style="--appear-delay: {{ forloop.index0 | divided_by: 12 }}s;">
+    {% for record in sheet reversed %}
+      <div class="day day--{{ record.state }} day--{{ record.date | weekday }}" style="--appear-delay: {{ forloop.index0 | divided_by: 12 }}s;">
         {% if record.state == 'yes' %}
           <img class="day__icon" src="/trophy.svg" alt="Trophy icon" title="She made it!" />
         {% elsif record.state == 'no' %}

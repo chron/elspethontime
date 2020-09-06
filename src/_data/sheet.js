@@ -1,12 +1,9 @@
 require('dotenv').config();
-const fetch = require('node-fetch');
 const { query, Client } = require('faunadb');
 const addDays = require('date-fns/addDays');
 const format = require('date-fns/format');
 
 const { Match, Paginate, Index } = query;
-
-const NUM_PLACEHOLDERS = 6;
 
 function addDaysSkipWeekends(date, numDays) {
   const newDate = addDays(date, numDays);
@@ -45,16 +42,19 @@ module.exports = async () => {
       state: 'unknown',
     });
   }
-  const placeholders = new Array(NUM_PLACEHOLDERS).fill(null).map(() => {
+
+  // lastDate = addDaysSkipWeekends(lastDate, 1);
+  // transformedData = transformedData.concat([{ date: lastDate, state: 'no' }]);
+
+  // Add placeholder squares to the end so we always have a full week
+  while(format(lastDate, 'i') < 5) {
     lastDate = addDaysSkipWeekends(lastDate, 1);
 
-    return {
+    transformedData = transformedData.concat({
       date: lastDate,
-      state: 'upcoming',
-    };
-  });
-
-  transformedData = transformedData.concat(placeholders);
+      state: 'ghost',
+    });
+  }
 
   return transformedData;
 };
