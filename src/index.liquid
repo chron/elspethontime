@@ -17,19 +17,12 @@ layout: layout.liquid
 
   <div class="calendar">
     {% for record in sheet reversed %}
+      {% assign state = states[record.state] %}
+
       <div class="day day--{{ record.state }} day--{{ record.date | weekday }}" style="--appear-delay: {{ forloop.index0 | divided_by: 12 }}s;">
-        {% if record.state == 'yes' %}
-          <img class="day__icon" src="/trophy.svg" alt="Trophy icon" title="She made it!" />
-        {% elsif record.state == 'no' %}
-          <img class="day__icon" src="/skull.svg" alt="Skull icon" title="She didn't make it." />
-        {% elsif record.state == 'wfh' %}
-          <img class="day__icon" src="/house.svg" alt="House icon" title="She worked from home this day." />
-        {% elsif record.state == 'sick' %}
-          <img class="day__icon" src="/heart-broken.svg" alt="Broken heart icon" title="She wasn't feeling well and had the day off." />
-        {% elsif record.state == 'unknown' %}
-          <img class="day__icon" src="/question-square.svg" alt="Question mark inside a square" title="Who knows???" />
-        {% endif %}
-        {% if record.state != 'ghost' %}
+        {% if state %}
+          <img class="day__icon" src="{{ state.image }}" alt="{{ state.alt }}" title="{{ state.title }}" />
+
           {{ record.date | cuteDate }}
         {% endif %}
       </div>
