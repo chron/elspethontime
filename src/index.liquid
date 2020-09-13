@@ -10,9 +10,15 @@ layout: layout.liquid
     <h2>Best streak: {{ sheet | bestStreak }}</h2>
   </div>
 
-  <div class="progress">
-    <div class="progress__bar" style="width: {{ sheet | currentStreak | times: 10 }}%"></div>
-    Progress towards next tier: {{ sheet | currentStreak }} / 10
+  {% assign currentStreak = sheet | currentStreak %}
+  {% assign currentTier = currentStreak | currentTier ) %}
+  {% assign nextTier = currentStreak | nextTier %}
+  {% assign currentTierProgress = currentStreak | minus: currentTier.threshold %}
+  {% assign currentTierTotal = nextTier.threshold | minus: currentTier.threshold %}
+
+  <div class="progress" style="--progress-foreground: {{ currentTier.foregroundColor }}; --progress-background: {{ currentTier.backgroundColor }}" >
+    <div class="progress__bar" style="width: {{ currentTierProgress | divided_by: currentTierTotal | times: 100 }}%"></div>
+    Progress towards next tier: {{ sheet | currentStreak }} / {{ nextTier.threshold }}
   </div>
 
   <div class="calendar">

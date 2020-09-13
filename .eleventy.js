@@ -2,6 +2,21 @@ const format = require('date-fns/format');
 
 // Others (e.g. WFH) don't count towards the total
 const ELIGIBLE_STATES = ['yes', 'no'];
+const TIERS = [
+  {
+    threshold: 0,
+    foregroundColor: 'black',
+    backgroundColor: 'linear-gradient(#25d49d, #0CBB84)',
+  },
+  {
+    threshold: 10,
+    foregroundColor: 'white',
+    backgroundColor: 'linear-gradient(#E63946, #D00000)',
+  },
+  {
+    threshold: 20,
+  },
+];
 
 function streaks(dayArray) {
   return dayArray.reduce(([current, max], day) => {
@@ -23,6 +38,14 @@ module.exports = function(config) {
   config.addLiquidFilter('bestStreak', dayArray => {
     const [, best] = streaks(dayArray);
     return best;
+  });
+
+  config.addLiquidFilter('nextTier', streak => {
+    return TIERS.find(t => t.threshold >= streak);
+  });
+
+  config.addLiquidFilter('currentTier', streak => {
+    return TIERS.slice().reverse().find(t => t.threshold <= streak);
   });
 
   config.addLiquidFilter('yesPercentage', dayArray => {
