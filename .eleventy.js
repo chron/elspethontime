@@ -10,7 +10,7 @@ const TIERS = [
   },
   {
     threshold: 10,
-    foregroundColor: 'white',
+    foregroundColor: 'black',
     backgroundColor: 'linear-gradient(#E63946, #D00000)',
   },
   {
