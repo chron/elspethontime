@@ -13,6 +13,8 @@ html { height: 100%; }
   --failure-background: #333333;
   --sick-foreground: #c47335;
   --sick-background: #f7c8a1;
+  --otherplans-foreground: #48cae4;
+  --otherplans-background: #0096c7;
   --unknown-foreground: #7400b8;
   --unknown-background: #bdb2ff;
   --wfh-foreground: #81b29a;
@@ -105,7 +107,7 @@ a:hover, a:active {
   box-shadow: 0 calc(0.005 * var(--scale)) calc(0.01 * var(--scale)) rgba(0,0,0,0.2);
 
   color: var(--text-color);
-  font-size: calc(0.018 * var(--scale));
+  font-size: calc(0.016 * var(--scale));
   font-weight: bold;
 
   animation: 0.15s ease-out var(--appear-delay) normal both appear;
@@ -139,6 +141,11 @@ a:hover, a:active {
 .day--sick {
   background: var(--sick-background);
   color: var(--sick-foreground);
+}
+
+.day--otherplans {
+  background: var(--otherplans-background);
+  color: var(--otherplans-foreground);
 }
 
 .day--monday { grid-column: 1; }
