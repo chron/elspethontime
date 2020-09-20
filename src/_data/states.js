@@ -19,6 +19,11 @@ module.exports =  {
     alt: 'Broken heart icon',
     title: 'She wasn\'t feeling well and had the day off.',
   },
+  holiday: {
+    image: '/skating.svg',
+    alt: 'Person ice-skating',
+    title: 'She was taking a well-deserved holiday.',
+  },
   otherplans: {
     image: '/paper-plane.svg',
     alt: 'Paper plane icon',

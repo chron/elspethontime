@@ -15,6 +15,8 @@ html { height: 100%; }
   --sick-background: #f7c8a1;
   --otherplans-foreground: #48cae4;
   --otherplans-background: #0096c7;
+  --holiday-foreground: black;
+  --holiday-background: white;
   --unknown-foreground: #7400b8;
   --unknown-background: #bdb2ff;
   --wfh-foreground: #81b29a;
@@ -146,6 +148,11 @@ a:hover, a:active {
 .day--otherplans {
   background: var(--otherplans-background);
   color: var(--otherplans-foreground);
+}
+
+.day--holiday {
+  background: var(--holiday-background);
+  color: var(--holiday-foreground);
 }
 
 .day--monday { grid-column: 1; }

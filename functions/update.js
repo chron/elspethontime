@@ -19,6 +19,7 @@ const MESSAGES_BY_STATE = {
   wfh: `Elspeth is working from home today.`,
   sick: `Elspeth is off sick today.`,
   otherplans: `Elspeth had something better to do today.`,
+  holiday: `Elspeth is on holiday!`,
 };
 
 async function tweet(status) {
