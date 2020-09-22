@@ -20,8 +20,8 @@ module.exports =  {
     title: 'She wasn\'t feeling well and had the day off.',
   },
   holiday: {
-    image: '/skating.svg',
-    alt: 'Person ice-skating',
+    image: '/hiking.svg',
+    alt: 'Person hiking',
     title: 'She was taking a well-deserved holiday.',
   },
   otherplans: {
