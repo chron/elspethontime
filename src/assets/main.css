@@ -13,10 +13,10 @@ html { height: 100%; }
   --failure-background: #333333;
   --sick-foreground: #c47335;
   --sick-background: #f7c8a1;
-  --otherplans-foreground: #48cae4;
-  --otherplans-background: #0096c7;
-  --holiday-foreground: black;
-  --holiday-background: white;
+  --otherplans-foreground: #0096c7;
+  --otherplans-background: #48cae4;
+  --holiday-foreground: #74121D;
+  --holiday-background: #FF5964;
   --unknown-foreground: #7400b8;
   --unknown-background: #bdb2ff;
   --wfh-foreground: #81b29a;
