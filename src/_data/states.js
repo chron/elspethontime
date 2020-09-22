@@ -19,11 +19,23 @@ module.exports =  {
     alt: 'Broken heart icon',
     title: 'She wasn\'t feeling well and had the day off.',
   },
-  holiday: {
-    image: '/hiking.svg',
-    alt: 'Person hiking',
-    title: 'She was taking a well-deserved holiday.',
-  },
+  holiday: [
+    {
+      image: '/hiking.svg',
+      alt: 'Person hiking',
+      title: 'She was taking a well-deserved holiday.',
+    },
+    {
+      image: '/hot-tub.svg',
+      alt: 'Hot tub',
+      title: 'She was taking a well-deserved holiday.',
+    },
+    {
+      image: '/wine-glass-alt.svg',
+      alt: 'Half-filled wine glass',
+      title: 'She was taking a well-deserved holiday.',
+    },
+  ],
   otherplans: {
     image: '/paper-plane.svg',
     alt: 'Paper plane icon',

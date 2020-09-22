@@ -56,6 +56,16 @@ module.exports = function(config) {
     return Math.round(yes / elig * 100);
   });
 
+  config.addLiquidFilter('chooseImage', (record, allStates) => {
+    const options = allStates[record.state];
+
+    if (Array.isArray(options)) {
+      return options[(record.run - 1) % options.length];
+    } else {
+      return options;
+    }
+  });
+
   config.addLiquidFilter('cuteDate', date => {
     return format(date, 'MMMM do');
   });

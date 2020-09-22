@@ -23,11 +23,11 @@ layout: layout.liquid
 
   <div class="calendar">
     {% for record in sheet reversed %}
-      {% assign state = states[record.state] %}
-
       <div class="day day--{{ record.state }} day--{{ record.date | weekday }}" style="--appear-delay: {{ forloop.index0 | divided_by: 5 | floor | divided_by: 6 }}s;">
-        {% if state %}
-          <img class="day__icon" src="{{ state.image }}" alt="{{ state.alt }}" title="{{ state.title }}" />
+        {% assign nextImage = record | chooseImage: states %}
+
+        {% if nextImage %}
+          <img class="day__icon" src="{{ nextImage.image }}" alt="{{ nextImage.alt }}" title="{{ nextImage.title }}" />
 
           {{ record.date | cuteDate }}
         {% endif %}

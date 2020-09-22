@@ -56,5 +56,19 @@ module.exports = async () => {
     });
   }
 
+  // Decorate all entries with a run attribute which is an integer number of
+  // consecutive days with the same state.
+  let currentState, currentRun;
+  transformedData = transformedData.map(d => {
+    if (d.state === currentState) {
+      currentRun += 1;
+    } else {
+      currentRun = 1;
+      currentState = d.state;
+    }
+
+    return { ...d, run: currentRun };
+  })
+
   return transformedData;
 };
