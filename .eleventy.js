@@ -41,7 +41,7 @@ module.exports = function(config) {
   });
 
   config.addLiquidFilter('nextTier', streak => {
-    return TIERS.find(t => t.threshold >= streak);
+    return TIERS.find(t => t.threshold > streak);
   });
 
   config.addLiquidFilter('currentTier', streak => {
