@@ -22,6 +22,12 @@ layout: layout.liquid
   </div>
 
   <div class="calendar">
+    <div class="calendar__heading">Mon</div>
+    <div class="calendar__heading">Tue</div>
+    <div class="calendar__heading">Wed</div>
+    <div class="calendar__heading">Thu</div>
+    <div class="calendar__heading">Fri</div>
+
     {% for record in sheet reversed %}
       <div class="day day--{{ record.state }} day--{{ record.date | weekday }}" style="--appear-delay: {{ forloop.index0 | divided_by: 5 | floor | divided_by: 6 }}s;">
         {% assign nextImage = record | chooseImage: states %}

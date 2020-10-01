@@ -22,6 +22,7 @@ html { height: 100%; }
   --wfh-foreground: #81b29a;
   --wfh-background: hsl(150, 24%, 84%);
   --text-color: #36454f;
+  --secondary-text-color: #AEB8C1;
   --body-font: "Inter", "Open Sans", sans-serif;
   --title-font: inherit;
   --scale: clamp(400px, 100vw, 1000px);
@@ -95,9 +96,18 @@ a:hover, a:active {
 .calendar {
   display: grid;
   grid-template-columns: repeat(5, calc(0.15 * var(--scale)));
-  grid-auto-rows: calc(0.15 * var(--scale));
+  grid-template-rows: calc(0.03 * var(--scale)); /* just for the first row with headers */
+  grid-auto-rows: calc(0.15 * var(--scale)); /* all other rows */
   grid-auto-flow: dense;
   grid-gap: calc(0.02 * var(--scale));
+}
+
+.calendar__heading {
+  text-align: center;
+  margin: auto;
+  font-size: calc(0.02 * var(--scale));
+  font-weight: bold;
+  color: var(--secondary-text-color);
 }
 
 .day {
@@ -116,7 +126,7 @@ a:hover, a:active {
   transform: scale(1);
 }
 
-.day:hover > img {
+.day:hover > .day__icon {
   transform: scale(1.05);
 }
 
@@ -182,7 +192,7 @@ a:hover, a:active {
   display: flex;
   justify-content: center;
   align-items: center;
-  margin: calc(0.04 * var(--scale)) 0;
+  margin: calc(0.03 * var(--scale)) 0 calc(0.02 * var(--scale)) 0;
   padding: calc(0.005 * var(--scale)) 0;
   border-radius: calc(0.01 * var(--scale));
   box-shadow: 0 0 calc(0.01 * var(--scale)) rgba(0,0,0,0.2);
