@@ -57,8 +57,11 @@ module.exports = async () => {
   }
 
   // Decorate all entries with a run attribute which is an integer number of
-  // consecutive days with the same state.
+  // consecutive days with the same state, as well as a total for that state
+  // at that point in time.
   let currentState, currentRun;
+  let totalForState = {};
+
   transformedData = transformedData.map(d => {
     if (d.state === currentState) {
       currentRun += 1;
@@ -67,7 +70,10 @@ module.exports = async () => {
       currentState = d.state;
     }
 
-    return { ...d, run: currentRun };
+    if (totalForState[d.state] === undefined) { totalForState[d.state] = 0; }
+    totalForState[d.state] += 1;
+
+    return { ...d, run: currentRun, total: totalForState[d.state] };
   })
 
   return transformedData;

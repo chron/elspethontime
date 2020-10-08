@@ -60,7 +60,7 @@ module.exports = function(config) {
     const options = allStates[record.state];
 
     if (Array.isArray(options)) {
-      return options[(record.run - 1) % options.length];
+      return options[(record.total - 1) % options.length];
     } else {
       return options;
     }
