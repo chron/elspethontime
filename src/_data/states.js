@@ -35,6 +35,11 @@ module.exports =  {
       alt: 'Half-filled wine glass',
       title: 'She was taking a well-deserved holiday.',
     },
+    {
+      image: '/plane-departure.svg',
+      alt: 'Plane departing',
+      title: 'She was taking a well-deserved holiday.',
+    },
   ],
   otherplans: {
     image: '/paper-plane.svg',
