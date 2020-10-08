@@ -40,6 +40,11 @@ module.exports =  {
       alt: 'Plane departing',
       title: 'She was taking a well-deserved holiday.',
     },
+    {
+      image: '/comments-alt.svg',
+      alt: 'Blank speech bubbles',
+      title: 'She was taking a well-deserved holiday.',
+    },
   ],
   otherplans: {
     image: '/paper-plane.svg',
