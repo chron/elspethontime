@@ -40,6 +40,10 @@ module.exports = function(config) {
     return best;
   });
 
+  config.addLiquidFilter('filterGhosts', dayArray => {
+    return dayArray.filter(d => d.state !== 'ghost');
+  });
+
   config.addLiquidFilter('nextTier', streak => {
     return TIERS.find(t => t.threshold > streak);
   });

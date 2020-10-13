@@ -2,5 +2,5 @@
 permalink: /api/days.json
 ---
 {
-  "days": {{ sheet | jsonify }}
+  "days": {{ sheet | filterGhosts | jsonify }}
 }
