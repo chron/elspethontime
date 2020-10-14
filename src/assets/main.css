@@ -17,6 +17,8 @@ html { height: 100%; }
   --otherplans-background: #48cae4;
   --holiday-foreground: #7C84B6;
   --holiday-background: #979DC4;
+  --actofgod-foreground: #ffafcc;
+  --actofgod-background: #fde2e4;
   --unknown-foreground: #7400b8;
   --unknown-background: #bdb2ff;
   --wfh-foreground: #81b29a;
@@ -163,6 +165,11 @@ a:hover, a:active {
 .day--holiday {
   background: var(--holiday-background);
   color: var(--holiday-foreground);
+}
+
+.day--actofgod {
+  background: var(--actofgod-background);
+  color: var(--actofgod-foreground);
 }
 
 .day--monday { grid-column: 1; }

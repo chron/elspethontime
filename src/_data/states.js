@@ -48,8 +48,13 @@ module.exports =  {
   ],
   otherplans: {
     image: '/paper-plane.svg',
-    alt: 'Paper plane icon',
+    alt: 'Paper plane',
     title: 'She had something better to do.',
+  },
+  actofgod: {
+    image: '/angel.svg',
+    alt: 'Angel',
+    title: 'Fate conspired against her today.',
   },
   unknown: {
     image: '/question-square.svg',
