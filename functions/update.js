@@ -20,6 +20,7 @@ const MESSAGES_BY_STATE = {
   sick: `Elspeth is off sick today.`,
   otherplans: `Elspeth had something better to do today.`,
   holiday: `Elspeth is on holiday!`,
+  publicholiday: `We are all on holiday!`,
   actofgod: `The fates conspired against Elspeth today (but it wasn't her fault).`,
 };
 

@@ -51,6 +51,11 @@ module.exports =  {
       title: 'She was taking a well-deserved holiday.',
     },
   ],
+  publicholiday: {
+    image: '/umbrella-beach.svg',
+    alt: 'Beach umbrella',
+    title: 'The whole nation had the day off.',
+  },
   otherplans: {
     image: '/paper-plane.svg',
     alt: 'Paper plane',
