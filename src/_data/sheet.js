@@ -20,7 +20,7 @@ function addDaysSkipWeekends(date, numDays) {
 
 module.exports = async () => {
   const fauna = new Client({ secret: process.env.FAUNADB_SECRET_KEY });
-  let response = await fauna.query(Paginate(Match(Index('all_days'))));
+  let response = await fauna.query(Paginate(Match(Index('all_days')), { size: 10000 }));
 
   let transformedData = response.data.map(([itemDate, state]) => {
     const date = new Date(Date.parse(itemDate));
