@@ -44,7 +44,7 @@ module.exports = async () => {
   }
 
   // lastDate = addDaysSkipWeekends(lastDate, 1);
-  // transformedData = transformedData.concat([{ date: lastDate, state: 'actofgod' }]);
+  // transformedData = transformedData.concat([{ date: lastDate, state: 'everyoneelse' }]);
 
   // Add placeholder squares to the end so we always have a full week
   while(format(lastDate, 'i') < 5) {

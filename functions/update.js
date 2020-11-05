@@ -22,6 +22,7 @@ const MESSAGES_BY_STATE = {
   holiday: `Elspeth is on holiday!`,
   publicholiday: `We are all on holiday!`,
   actofgod: `The fates conspired against Elspeth today (but it wasn't her fault).`,
+  everyoneelse: `Bianca, Andy, and two different Pauls made it on time.`,
 };
 
 async function tweet(status) {

@@ -20,8 +20,10 @@ const TIERS = [
 
 function streaks(dayArray) {
   return dayArray.reduce(([current, max], day) => {
-    const newCurrent = day.state === 'no' ? 0 : (
-      day.state === 'yes' ? current + 1 : current
+    const realState = day.state === 'everyoneelse' ? 'no' : day.state;
+
+    const newCurrent = realState === 'no' ? 0 : (
+      realState === 'yes' ? current + 1 : current
     );
     const newMax = Math.max(max, newCurrent);
 

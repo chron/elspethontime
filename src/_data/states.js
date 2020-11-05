@@ -71,4 +71,9 @@ module.exports =  {
     alt: 'Question mark inside a square',
     title: 'Who knows???',
   },
+  everyoneelse: {
+    image: '/users-crown.svg',
+    alt: 'A group of users, one of whom is wearing a crown',
+    title: 'Everyone except Elspeth made it today!',
+  }
 }
