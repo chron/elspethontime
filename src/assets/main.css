@@ -21,8 +21,8 @@ html { height: 100%; }
   --publicholiday-foreground: #D66853;
   --actofgod-foreground: #ffafcc;
   --actofgod-background: #fde2e4;
-  --everyoneelse-foreground: #027218;
-  --everyoneelse-background: #01390c;
+  --everyoneelse-foreground: white;
+  --everyoneelse-background: #333333;
   --unknown-foreground: #7400b8;
   --unknown-background: #bdb2ff;
   --wfh-foreground: #81b29a;
