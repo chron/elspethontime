@@ -50,6 +50,11 @@ module.exports =  {
       alt: 'Enormous ship',
       title: 'She was taking a well-deserved holiday.',
     },
+    {
+      image: '/plane-departure.svg',
+      alt: 'Plane departing',
+      title: 'She was taking a well-deserved holiday.',
+    },
   ],
   publicholiday: {
     image: '/umbrella-beach.svg',
