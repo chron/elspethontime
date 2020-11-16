@@ -132,6 +132,10 @@ a:hover, a:active {
   transform: scale(1);
 }
 
+:checked + .day {
+  border: calc(0.008 * var(--scale)) solid black;
+}
+
 .day:hover > .day__icon {
   transform: scale(1.05);
 }
@@ -270,4 +274,18 @@ a:hover, a:active {
   80% { transform: translate(-1px, -1px) rotate(1deg); }
   90% { transform: translate(1px, 2px) rotate(0deg); }
   100% { transform: translate(1px, -2px) rotate(-1deg); }
+}
+
+.state-radio {
+  display: none;
+}
+
+.admin-controls {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.admin-controls > * {
+  margin-top: calc(0.05 * var(--scale));
 }

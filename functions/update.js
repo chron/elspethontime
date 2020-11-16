@@ -44,7 +44,7 @@ exports.handler = async function(event, _context) {
 
   if (password !== process.env.BACKEND_PASSWORD) {
     console.log('Incorrect password, aborting');
-    return { statusCode: 401, body: "Bad" };
+    return { statusCode: 401, body: "Wrong password" };
   }
 
   const date = format(new Date(), 'yyyy-MM-dd');
@@ -93,15 +93,15 @@ exports.handler = async function(event, _context) {
     console.log('Done!');
 
     return {
-      statusCode: 204,
-      body: "",
+      statusCode: 200,
+      body: "Done!",
     }
   } catch (e) {
     console.error(e);
 
     return {
       statusCode: 500,
-      body: "Darn",
+      body: JSON.stringify(e),
     };
   }
 }

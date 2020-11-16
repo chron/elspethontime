@@ -1,0 +1,58 @@
+---
+layout: layout.liquid
+---
+<div class="content">
+  <h1>Where that Elspeth at?</h1>
+
+  <form action="/.netlify/functions/update" method="GET">
+    <div class="calendar">
+      <div class="calendar__heading"></div>
+      <div class="calendar__heading"></div>
+      <div class="calendar__heading"></div>
+      <div class="calendar__heading"></div>
+      <div class="calendar__heading"></div>
+
+      {% for stateArray in states %}
+        {% if stateArray[1][0] %}
+          {% assign state = stateArray[1][0] %}
+        {% else %}
+          {% assign state = stateArray[1] %}
+        {% endif %}
+
+        <input id="state-radio-{{ stateArray[0] }}" type="radio" class="state-radio" name="state" value="{{ stateArray[0] }}" />
+
+        <label for="state-radio-{{ stateArray[0] }}" class="day day--{{ stateArray[0] }}">
+          <img class="day__icon" src="{{ state.image }}" alt="{{ state.alt }}" title="{{ state.title }}" />
+
+          {{ stateArray[0] }}
+        </label>
+      {% endfor %}
+    </div>
+
+    <div class="admin-controls">
+      <input id="password-input" type="password" name="password" />
+      <button type="submit">Save</button>
+    </div>
+  </form>
+</div>
+
+<footer>
+  <section>
+    Made with
+    <span class="heart">♥</span>
+    by
+    <a href="https://twitter.com/chron9">Paul</a>
+  </section>
+
+  <section>
+    Follow
+    <a href="https://twitter.com/elspethontime">@elspethontime</a>
+    for live updates!
+  </section>
+</footer>
+
+<script type="text/javascript">
+  const p = document.getElementById('password-input');
+  p.addEventListener('change', e => localStorage.setItem('demi-password', e.target.value));
+  p.value = localStorage.getItem('demi-password');
+</script>
