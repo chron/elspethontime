@@ -47,6 +47,11 @@ exports.handler = async function(event, _context) {
     return { statusCode: 401, body: "Wrong password" };
   }
 
+  if (!Object.keys(MESSAGES_BY_STATE).includes(state)) {
+    console.log('Invalid state, aborting');
+    return { statusCode: 400, body: "Unknown or blank state provided" };
+  }
+
   const date = format(new Date(), 'yyyy-MM-dd');
 
   console.log(`State = ${state}, date = ${date}`);
