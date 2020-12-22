@@ -3,7 +3,7 @@ const { query, Client } = require('faunadb');
 const addDays = require('date-fns/addDays');
 const format = require('date-fns/format');
 
-const { Match, Paginate, Index } = query;
+const { Match, Paginate, Index, Let, Filter, Lambda, LTE, Var } = query;
 
 function addDaysSkipWeekends(date, numDays) {
   const newDate = addDays(date, numDays);
@@ -19,8 +19,18 @@ function addDaysSkipWeekends(date, numDays) {
 }
 
 module.exports = async () => {
+  const nowInLocalTime = new Date();
+
   const fauna = new Client({ secret: process.env.FAUNADB_SECRET_KEY });
-  let response = await fauna.query(Paginate(Match(Index('all_days')), { size: 10000 }));
+  let response = await fauna.query(
+    Let(
+      { cutoff: query.Date(format(nowInLocalTime, 'yyyy-MM-dd')) },
+      Filter(
+        Paginate(Match(Index('all_days')), { size: 10000 }),
+        Lambda(["date", "state"], LTE(query.Date(Var("date")), Var("cutoff")))
+      )
+    )
+  );
 
   let transformedData = response.data.map(([itemDate, state]) => {
     const date = new Date(Date.parse(itemDate));
@@ -31,10 +41,10 @@ module.exports = async () => {
   }).filter(Boolean);
 
   let lastDate = transformedData[transformedData.length - 1].date;
-  // This is really not DST-compatible
-  const nowInNZT = new Date(Date.now() + 12 * 60 * 60 * 1000);
 
-  while (format(lastDate, 'yyyyMMdd') < format(nowInNZT, 'yyyyMMdd')) {
+  while (format(lastDate, 'yyyy-MM-dd') < format(nowInLocalTime, 'yyyy-MM-dd')) {
+    console.log(format(lastDate, 'yyyy-MM-dd'))
+    console.log('now', format(nowInLocalTime, 'yyyy-MM-dd'))
     lastDate = addDaysSkipWeekends(lastDate, 1);
 
     transformedData = transformedData.concat({

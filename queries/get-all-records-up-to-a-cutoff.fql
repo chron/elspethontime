@@ -1,0 +1,7 @@
+Let(
+  { cutoff: Date("2020-12-01") },
+  Filter(
+    Paginate(Match(Index('all_days')), { size: 10000 }),
+    Lambda(["date", "state"], LTE(Date(Var("date")), Var("cutoff")))
+  )
+)

@@ -15,9 +15,9 @@
   "license": "MIT",
   "homepage": "https://didelspethmakeit.com",
   "devDependencies": {
-    "@11ty/eleventy": "^0.11.0",
-    "date-fns": "^2.15.0",
+    "@11ty/eleventy": "^0.11.1",
+    "date-fns": "^2.16.1",
     "dotenv": "^8.2.0",
-    "faunadb": "^2.14.2"
+    "faunadb": "^4.0.0"
   }
 }

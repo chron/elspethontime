@@ -1,1 +1,1 @@
-Paginate(Match(Index('all_days')))
+Paginate(Match(Index('all_days')), { size: 10000 })
