@@ -19,12 +19,12 @@ function addDaysSkipWeekends(date, numDays) {
 }
 
 module.exports = async () => {
-  const nowInLocalTime = new Date();
+  const cutoffDate = new Date(2021, 0, 14);
 
   const fauna = new Client({ secret: process.env.FAUNADB_SECRET_KEY });
   let response = await fauna.query(
     Let(
-      { cutoff: query.Date(format(nowInLocalTime, 'yyyy-MM-dd')) },
+      { cutoff: query.Date(format(cutoffDate, 'yyyy-MM-dd')) },
       Filter(
         Paginate(Match(Index('all_days')), { size: 10000 }),
         Lambda(["date", "state"], LTE(query.Date(Var("date")), Var("cutoff")))
@@ -42,9 +42,7 @@ module.exports = async () => {
 
   let lastDate = transformedData[transformedData.length - 1].date;
 
-  while (format(lastDate, 'yyyy-MM-dd') < format(nowInLocalTime, 'yyyy-MM-dd')) {
-    console.log(format(lastDate, 'yyyy-MM-dd'))
-    console.log('now', format(nowInLocalTime, 'yyyy-MM-dd'))
+  while (format(lastDate, 'yyyy-MM-dd') < format(cutoffDate, 'yyyy-MM-dd')) {
     lastDate = addDaysSkipWeekends(lastDate, 1);
 
     transformedData = transformedData.concat({
